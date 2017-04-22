@@ -1,0 +1,8 @@
+{
+    "name": "justnero-ru/eaisto",
+    "autoload": {
+        "psr-0" : {
+            "JustneroRu\\EAISTO" : "src"
+        }
+    }
+}
