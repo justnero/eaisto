@@ -4,5 +4,8 @@
         "psr-0" : {
             "JustneroRu\\EAISTO" : "src"
         }
+    },
+    "require": {
+        "tuscanicz/soap": "^4.2"
     }
 }
