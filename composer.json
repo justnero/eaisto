@@ -6,6 +6,5 @@
         }
     },
     "require": {
-        "tuscanicz/soap": "^4.2"
     }
 }

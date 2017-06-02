@@ -2,11 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/vendor/ass/xmlsecurity" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/tuscanicz/soap" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-mime" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zend-stdlib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -23,18 +19,10 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/ass/xmlsecurity" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/tuscanicz/soap" />
-          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-mime" />
-          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-stdlib" />
         </CLASSES>
         <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/ass/xmlsecurity" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/tuscanicz/soap" />
-          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-mime" />
-          <root url="file://$MODULE_DIR$/vendor/zendframework/zend-stdlib" />
         </SOURCES>
       </library>
     </orderEntry>
