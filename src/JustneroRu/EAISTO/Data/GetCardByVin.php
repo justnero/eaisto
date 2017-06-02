@@ -2,263 +2,261 @@
 
 namespace JustneroRu\EAISTO\Data;
 
-class GetCardByVin
-{
+class GetCardByVin {
 
-    /**
-     * @var UserInfo $user
-     */
-    protected $user = null;
+	/**
+	 * @var UserInfo $user
+	 */
+	protected $user = null;
 
-    /**
-     * @var Purpose $Purpose
-     */
-    protected $Purpose = null;
+	/**
+	 * @var Purpose $Purpose
+	 */
+	protected $Purpose = null;
 
-    /**
-     * @var string $vin
-     */
-    protected $vin = null;
+	/**
+	 * @var string $vin
+	 */
+	protected $vin = null;
 
-    /**
-     * @var string $regNumber
-     */
-    protected $regNumber = null;
+	/**
+	 * @var string $regNumber
+	 */
+	protected $regNumber = null;
 
-    /**
-     * @var string $BodyNumber
-     */
-    protected $BodyNumber = null;
+	/**
+	 * @var string $BodyNumber
+	 */
+	protected $BodyNumber = null;
 
-    /**
-     * @var string $FrameNumber
-     */
-    protected $FrameNumber = null;
+	/**
+	 * @var string $FrameNumber
+	 */
+	protected $FrameNumber = null;
 
-    /**
-     * @var string $formNumber
-     */
-    protected $formNumber = null;
+	/**
+	 * @var string $formNumber
+	 */
+	protected $formNumber = null;
 
-    /**
-     * @var string $formSeries
-     */
-    protected $formSeries = null;
+	/**
+	 * @var string $formSeries
+	 */
+	protected $formSeries = null;
 
-    /**
-     * @var string $dateFrom
-     */
-    protected $dateFrom = null;
+	/**
+	 * @var string $dateFrom
+	 */
+	protected $dateFrom = null;
 
-    /**
-     * @var string $dateTo
-     */
-    protected $dateTo = null;
+	/**
+	 * @var string $dateTo
+	 */
+	protected $dateTo = null;
 
-    /**
-     * @param UserInfo $user
-     * @param Purpose $Purpose
-     * @param string $vin
-     * @param string $regNumber
-     * @param string $BodyNumber
-     * @param string $FrameNumber
-     * @param string $formNumber
-     * @param string $formSeries
-     * @param string $dateFrom
-     * @param string $dateTo
-     */
-    public function __construct($user, $Purpose, $vin, $regNumber, $BodyNumber, $FrameNumber, $formNumber, $formSeries, $dateFrom, $dateTo)
-    {
-      $this->user = $user;
-      $this->Purpose = $Purpose;
-      $this->vin = $vin;
-      $this->regNumber = $regNumber;
-      $this->BodyNumber = $BodyNumber;
-      $this->FrameNumber = $FrameNumber;
-      $this->formNumber = $formNumber;
-      $this->formSeries = $formSeries;
-      $this->dateFrom = $dateFrom;
-      $this->dateTo = $dateTo;
-    }
+	/**
+	 * @param UserInfo $user
+	 * @param Purpose $Purpose
+	 * @param string $vin
+	 * @param string $regNumber
+	 * @param string $BodyNumber
+	 * @param string $FrameNumber
+	 * @param string $formNumber
+	 * @param string $formSeries
+	 * @param string $dateFrom
+	 * @param string $dateTo
+	 */
+	public function __construct( $user, $Purpose, $vin, $regNumber, $BodyNumber, $FrameNumber, $formNumber, $formSeries, $dateFrom, $dateTo ) {
+		$this->user        = $user;
+		$this->Purpose     = $Purpose;
+		$this->vin         = $vin;
+		$this->regNumber   = $regNumber;
+		$this->BodyNumber  = $BodyNumber;
+		$this->FrameNumber = $FrameNumber;
+		$this->formNumber  = $formNumber;
+		$this->formSeries  = $formSeries;
+		$this->dateFrom    = $dateFrom;
+		$this->dateTo      = $dateTo;
+	}
 
-    /**
-     * @return UserInfo
-     */
-    public function getUser()
-    {
-      return $this->user;
-    }
+	/**
+	 * @return UserInfo
+	 */
+	public function getUser() {
+		return $this->user;
+	}
 
-    /**
-     * @param UserInfo $user
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setUser($user)
-    {
-      $this->user = $user;
-      return $this;
-    }
+	/**
+	 * @param UserInfo $user
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setUser( $user ) {
+		$this->user = $user;
 
-    /**
-     * @return Purpose
-     */
-    public function getPurpose()
-    {
-      return $this->Purpose;
-    }
+		return $this;
+	}
 
-    /**
-     * @param Purpose $Purpose
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setPurpose($Purpose)
-    {
-      $this->Purpose = $Purpose;
-      return $this;
-    }
+	/**
+	 * @return Purpose
+	 */
+	public function getPurpose() {
+		return $this->Purpose;
+	}
 
-    /**
-     * @return string
-     */
-    public function getVin()
-    {
-      return $this->vin;
-    }
+	/**
+	 * @param Purpose $Purpose
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setPurpose( $Purpose ) {
+		$this->Purpose = $Purpose;
 
-    /**
-     * @param string $vin
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setVin($vin)
-    {
-      $this->vin = $vin;
-      return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @return string
-     */
-    public function getRegNumber()
-    {
-      return $this->regNumber;
-    }
+	/**
+	 * @return string
+	 */
+	public function getVin() {
+		return $this->vin;
+	}
 
-    /**
-     * @param string $regNumber
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setRegNumber($regNumber)
-    {
-      $this->regNumber = $regNumber;
-      return $this;
-    }
+	/**
+	 * @param string $vin
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setVin( $vin ) {
+		$this->vin = $vin;
 
-    /**
-     * @return string
-     */
-    public function getBodyNumber()
-    {
-      return $this->BodyNumber;
-    }
+		return $this;
+	}
 
-    /**
-     * @param string $BodyNumber
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setBodyNumber($BodyNumber)
-    {
-      $this->BodyNumber = $BodyNumber;
-      return $this;
-    }
+	/**
+	 * @return string
+	 */
+	public function getRegNumber() {
+		return $this->regNumber;
+	}
 
-    /**
-     * @return string
-     */
-    public function getFrameNumber()
-    {
-      return $this->FrameNumber;
-    }
+	/**
+	 * @param string $regNumber
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setRegNumber( $regNumber ) {
+		$this->regNumber = $regNumber;
 
-    /**
-     * @param string $FrameNumber
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setFrameNumber($FrameNumber)
-    {
-      $this->FrameNumber = $FrameNumber;
-      return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @return string
-     */
-    public function getFormNumber()
-    {
-      return $this->formNumber;
-    }
+	/**
+	 * @return string
+	 */
+	public function getBodyNumber() {
+		return $this->BodyNumber;
+	}
 
-    /**
-     * @param string $formNumber
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setFormNumber($formNumber)
-    {
-      $this->formNumber = $formNumber;
-      return $this;
-    }
+	/**
+	 * @param string $BodyNumber
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setBodyNumber( $BodyNumber ) {
+		$this->BodyNumber = $BodyNumber;
 
-    /**
-     * @return string
-     */
-    public function getFormSeries()
-    {
-      return $this->formSeries;
-    }
+		return $this;
+	}
 
-    /**
-     * @param string $formSeries
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setFormSeries($formSeries)
-    {
-      $this->formSeries = $formSeries;
-      return $this;
-    }
+	/**
+	 * @return string
+	 */
+	public function getFrameNumber() {
+		return $this->FrameNumber;
+	}
 
-    /**
-     * @return string
-     */
-    public function getDateFrom()
-    {
-      return $this->dateFrom;
-    }
+	/**
+	 * @param string $FrameNumber
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setFrameNumber( $FrameNumber ) {
+		$this->FrameNumber = $FrameNumber;
 
-    /**
-     * @param string $dateFrom
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setDateFrom($dateFrom)
-    {
-      $this->dateFrom = $dateFrom;
-      return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @return string
-     */
-    public function getDateTo()
-    {
-      return $this->dateTo;
-    }
+	/**
+	 * @return string
+	 */
+	public function getFormNumber() {
+		return $this->formNumber;
+	}
 
-    /**
-     * @param string $dateTo
-     * @return \JustneroRu\EAISTO\Data\GetCardByVin
-     */
-    public function setDateTo($dateTo)
-    {
-      $this->dateTo = $dateTo;
-      return $this;
-    }
+	/**
+	 * @param string $formNumber
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setFormNumber( $formNumber ) {
+		$this->formNumber = $formNumber;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFormSeries() {
+		return $this->formSeries;
+	}
+
+	/**
+	 * @param string $formSeries
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setFormSeries( $formSeries ) {
+		$this->formSeries = $formSeries;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDateFrom() {
+		return $this->dateFrom;
+	}
+
+	/**
+	 * @param string $dateFrom
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setDateFrom( $dateFrom ) {
+		$this->dateFrom = $dateFrom;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDateTo() {
+		return $this->dateTo;
+	}
+
+	/**
+	 * @param string $dateTo
+	 *
+	 * @return \JustneroRu\EAISTO\Data\GetCardByVin
+	 */
+	public function setDateTo( $dateTo ) {
+		$this->dateTo = $dateTo;
+
+		return $this;
+	}
 
 }

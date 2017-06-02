@@ -2,63 +2,61 @@
 
 namespace JustneroRu\EAISTO\Data;
 
-class ListItem
-{
+class ListItem {
 
-    /**
-     * @var string $Code
-     */
-    protected $Code = null;
+	/**
+	 * @var string $Code
+	 */
+	protected $Code = null;
 
-    /**
-     * @var string $Title
-     */
-    protected $Title = null;
+	/**
+	 * @var string $Title
+	 */
+	protected $Title = null;
 
-    /**
-     * @param string $Code
-     * @param string $Title
-     */
-    public function __construct($Code, $Title)
-    {
-      $this->Code = $Code;
-      $this->Title = $Title;
-    }
+	/**
+	 * @param string $Code
+	 * @param string $Title
+	 */
+	public function __construct( $Code, $Title ) {
+		$this->Code  = $Code;
+		$this->Title = $Title;
+	}
 
-    /**
-     * @return string
-     */
-    public function getCode()
-    {
-      return $this->Code;
-    }
+	/**
+	 * @return string
+	 */
+	public function getCode() {
+		return $this->Code;
+	}
 
-    /**
-     * @param string $Code
-     * @return \JustneroRu\EAISTO\Data\ListItem
-     */
-    public function setCode($Code)
-    {
-      $this->Code = $Code;
-      return $this;
-    }
+	/**
+	 * @param string $Code
+	 *
+	 * @return \JustneroRu\EAISTO\Data\ListItem
+	 */
+	public function setCode( $Code ) {
+		$this->Code = $Code;
 
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-      return $this->Title;
-    }
+		return $this;
+	}
 
-    /**
-     * @param string $Title
-     * @return \JustneroRu\EAISTO\Data\ListItem
-     */
-    public function setTitle($Title)
-    {
-      $this->Title = $Title;
-      return $this;
-    }
+	/**
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->Title;
+	}
+
+	/**
+	 * @param string $Title
+	 *
+	 * @return \JustneroRu\EAISTO\Data\ListItem
+	 */
+	public function setTitle( $Title ) {
+		$this->Title = $Title;
+
+		return $this;
+	}
 
 }

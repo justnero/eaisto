@@ -2,163 +2,161 @@
 
 namespace JustneroRu\EAISTO\Data;
 
-class Form
-{
+class Form {
 
-    /**
-     * @var string $Comment
-     */
-    protected $Comment = null;
+	/**
+	 * @var string $Comment
+	 */
+	protected $Comment = null;
 
-    /**
-     * @var boolean $Duplicate
-     */
-    protected $Duplicate = null;
+	/**
+	 * @var boolean $Duplicate
+	 */
+	protected $Duplicate = null;
 
-    /**
-     * @var string $Number
-     */
-    protected $Number = null;
+	/**
+	 * @var string $Number
+	 */
+	protected $Number = null;
 
-    /**
-     * @var string $Series
-     */
-    protected $Series = null;
+	/**
+	 * @var string $Series
+	 */
+	protected $Series = null;
 
-    /**
-     * @var FormType $Type
-     */
-    protected $Type = null;
+	/**
+	 * @var FormType $Type
+	 */
+	protected $Type = null;
 
-    /**
-     * @var \DateTime $Validity
-     */
-    protected $Validity = null;
+	/**
+	 * @var \DateTime $Validity
+	 */
+	protected $Validity = null;
 
-    /**
-     * @param boolean $Duplicate
-     * @param \DateTime $Validity
-     */
-    public function __construct($Duplicate, \DateTime $Validity)
-    {
-      $this->Duplicate = $Duplicate;
-      $this->Validity = $Validity->format(\DateTime::ATOM);
-    }
+	/**
+	 * @param boolean $Duplicate
+	 * @param \DateTime $Validity
+	 */
+	public function __construct( $Duplicate, \DateTime $Validity ) {
+		$this->Duplicate = $Duplicate;
+		$this->Validity  = $Validity->format( \DateTime::ATOM );
+	}
 
-    /**
-     * @return string
-     */
-    public function getComment()
-    {
-      return $this->Comment;
-    }
+	/**
+	 * @return string
+	 */
+	public function getComment() {
+		return $this->Comment;
+	}
 
-    /**
-     * @param string $Comment
-     * @return \JustneroRu\EAISTO\Data\Form
-     */
-    public function setComment($Comment)
-    {
-      $this->Comment = $Comment;
-      return $this;
-    }
+	/**
+	 * @param string $Comment
+	 *
+	 * @return \JustneroRu\EAISTO\Data\Form
+	 */
+	public function setComment( $Comment ) {
+		$this->Comment = $Comment;
 
-    /**
-     * @return boolean
-     */
-    public function getDuplicate()
-    {
-      return $this->Duplicate;
-    }
+		return $this;
+	}
 
-    /**
-     * @param boolean $Duplicate
-     * @return \JustneroRu\EAISTO\Data\Form
-     */
-    public function setDuplicate($Duplicate)
-    {
-      $this->Duplicate = $Duplicate;
-      return $this;
-    }
+	/**
+	 * @return boolean
+	 */
+	public function getDuplicate() {
+		return $this->Duplicate;
+	}
 
-    /**
-     * @return string
-     */
-    public function getNumber()
-    {
-      return $this->Number;
-    }
+	/**
+	 * @param boolean $Duplicate
+	 *
+	 * @return \JustneroRu\EAISTO\Data\Form
+	 */
+	public function setDuplicate( $Duplicate ) {
+		$this->Duplicate = $Duplicate;
 
-    /**
-     * @param string $Number
-     * @return \JustneroRu\EAISTO\Data\Form
-     */
-    public function setNumber($Number)
-    {
-      $this->Number = $Number;
-      return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @return string
-     */
-    public function getSeries()
-    {
-      return $this->Series;
-    }
+	/**
+	 * @return string
+	 */
+	public function getNumber() {
+		return $this->Number;
+	}
 
-    /**
-     * @param string $Series
-     * @return \JustneroRu\EAISTO\Data\Form
-     */
-    public function setSeries($Series)
-    {
-      $this->Series = $Series;
-      return $this;
-    }
+	/**
+	 * @param string $Number
+	 *
+	 * @return \JustneroRu\EAISTO\Data\Form
+	 */
+	public function setNumber( $Number ) {
+		$this->Number = $Number;
 
-    /**
-     * @return FormType
-     */
-    public function getType()
-    {
-      return $this->Type;
-    }
+		return $this;
+	}
 
-    /**
-     * @param FormType $Type
-     * @return \JustneroRu\EAISTO\Data\Form
-     */
-    public function setType($Type)
-    {
-      $this->Type = $Type;
-      return $this;
-    }
+	/**
+	 * @return string
+	 */
+	public function getSeries() {
+		return $this->Series;
+	}
 
-    /**
-     * @return \DateTime
-     */
-    public function getValidity()
-    {
-      if ($this->Validity == null) {
-        return null;
-      } else {
-        try {
-          return new \DateTime($this->Validity);
-        } catch (\Exception $e) {
-          return false;
-        }
-      }
-    }
+	/**
+	 * @param string $Series
+	 *
+	 * @return \JustneroRu\EAISTO\Data\Form
+	 */
+	public function setSeries( $Series ) {
+		$this->Series = $Series;
 
-    /**
-     * @param \DateTime $Validity
-     * @return \JustneroRu\EAISTO\Data\Form
-     */
-    public function setValidity(\DateTime $Validity)
-    {
-      $this->Validity = $Validity->format(\DateTime::ATOM);
-      return $this;
-    }
+		return $this;
+	}
+
+	/**
+	 * @return FormType
+	 */
+	public function getType() {
+		return $this->Type;
+	}
+
+	/**
+	 * @param FormType $Type
+	 *
+	 * @return \JustneroRu\EAISTO\Data\Form
+	 */
+	public function setType( $Type ) {
+		$this->Type = $Type;
+
+		return $this;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getValidity() {
+		if ( $this->Validity == null ) {
+			return null;
+		} else {
+			try {
+				return new \DateTime( $this->Validity );
+			} catch ( \Exception $e ) {
+				return false;
+			}
+		}
+	}
+
+	/**
+	 * @param \DateTime $Validity
+	 *
+	 * @return \JustneroRu\EAISTO\Data\Form
+	 */
+	public function setValidity( \DateTime $Validity ) {
+		$this->Validity = $Validity->format( \DateTime::ATOM );
+
+		return $this;
+	}
 
 }

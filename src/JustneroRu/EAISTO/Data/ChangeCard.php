@@ -2,7 +2,7 @@
 
 namespace JustneroRu\EAISTO\Data;
 
-class RegisterCard {
+class ChangeCard {
 
 	/**
 	 * @var UserInfo $user
@@ -33,7 +33,7 @@ class RegisterCard {
 	/**
 	 * @param UserInfo $user
 	 *
-	 * @return \JustneroRu\EAISTO\Data\RegisterCard
+	 * @return \JustneroRu\EAISTO\Data\ChangeCard
 	 */
 	public function setUser( $user ) {
 		$this->user = $user;
@@ -51,7 +51,7 @@ class RegisterCard {
 	/**
 	 * @param Card $card
 	 *
-	 * @return \JustneroRu\EAISTO\Data\RegisterCard
+	 * @return \JustneroRu\EAISTO\Data\ChangeCard
 	 */
 	public function setCard( $card ) {
 		$this->card = $card;

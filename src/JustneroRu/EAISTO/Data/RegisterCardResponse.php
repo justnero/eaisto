@@ -2,63 +2,61 @@
 
 namespace JustneroRu\EAISTO\Data;
 
-class RegisterCardResponse
-{
+class RegisterCardResponse {
 
-    /**
-     * @var int $RegisterCardResult
-     */
-    protected $RegisterCardResult = null;
+	/**
+	 * @var int $RegisterCardResult
+	 */
+	protected $RegisterCardResult = null;
 
-    /**
-     * @var string $Nomer
-     */
-    protected $Nomer = null;
+	/**
+	 * @var string $Nomer
+	 */
+	protected $Nomer = null;
 
-    /**
-     * @param int $RegisterCardResult
-     * @param string $Nomer
-     */
-    public function __construct($RegisterCardResult, $Nomer)
-    {
-      $this->RegisterCardResult = $RegisterCardResult;
-      $this->Nomer = $Nomer;
-    }
+	/**
+	 * @param int $RegisterCardResult
+	 * @param string $Nomer
+	 */
+	public function __construct( $RegisterCardResult, $Nomer ) {
+		$this->RegisterCardResult = $RegisterCardResult;
+		$this->Nomer              = $Nomer;
+	}
 
-    /**
-     * @return int
-     */
-    public function getRegisterCardResult()
-    {
-      return $this->RegisterCardResult;
-    }
+	/**
+	 * @return int
+	 */
+	public function getRegisterCardResult() {
+		return $this->RegisterCardResult;
+	}
 
-    /**
-     * @param int $RegisterCardResult
-     * @return \JustneroRu\EAISTO\Data\RegisterCardResponse
-     */
-    public function setRegisterCardResult($RegisterCardResult)
-    {
-      $this->RegisterCardResult = $RegisterCardResult;
-      return $this;
-    }
+	/**
+	 * @param int $RegisterCardResult
+	 *
+	 * @return \JustneroRu\EAISTO\Data\RegisterCardResponse
+	 */
+	public function setRegisterCardResult( $RegisterCardResult ) {
+		$this->RegisterCardResult = $RegisterCardResult;
 
-    /**
-     * @return string
-     */
-    public function getNomer()
-    {
-      return $this->Nomer;
-    }
+		return $this;
+	}
 
-    /**
-     * @param string $Nomer
-     * @return \JustneroRu\EAISTO\Data\RegisterCardResponse
-     */
-    public function setNomer($Nomer)
-    {
-      $this->Nomer = $Nomer;
-      return $this;
-    }
+	/**
+	 * @return string
+	 */
+	public function getNomer() {
+		return $this->Nomer;
+	}
+
+	/**
+	 * @param string $Nomer
+	 *
+	 * @return \JustneroRu\EAISTO\Data\RegisterCardResponse
+	 */
+	public function setNomer( $Nomer ) {
+		$this->Nomer = $Nomer;
+
+		return $this;
+	}
 
 }
