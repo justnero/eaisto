@@ -134,7 +134,7 @@ class Form {
 	}
 
 	/**
-	 * @return \DateTime
+	 * @return \DateTime|bool
 	 */
 	public function getValidity() {
 		if ( $this->Validity == null ) {

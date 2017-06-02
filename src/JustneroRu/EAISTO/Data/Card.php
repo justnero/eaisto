@@ -253,7 +253,7 @@ class Card {
 	}
 
 	/**
-	 * @return \DateTime
+	 * @return \DateTime|bool
 	 */
 	public function getDateOfDiagnosis() {
 		if ( $this->DateOfDiagnosis == null ) {
@@ -675,7 +675,7 @@ class Card {
 	}
 
 	/**
-	 * @return \DateTime
+	 * @return \DateTime|bool
 	 */
 	public function getDateOfRetest() {
 		if ( $this->DateOfRetest == null ) {

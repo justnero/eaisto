@@ -124,7 +124,7 @@ class RegistrationDocument {
 	}
 
 	/**
-	 * @return \DateTime
+	 * @return \DateTime|bool
 	 */
 	public function getDate() {
 		if ( $this->Date == null ) {
