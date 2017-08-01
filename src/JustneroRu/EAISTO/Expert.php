@@ -2,68 +2,128 @@
 
 namespace JustneroRu\EAISTO;
 
-use JustneroRu\EAISTO\Data\ChangeCard;
-use JustneroRu\EAISTO\Data\ChangeCardResponse;
-use JustneroRu\EAISTO\Data\UnregisterCard;
-use JustneroRu\EAISTO\Data\UnregisterCardResponse;
+use JustneroRu\EAISTO\Data\GetCardByVin;
+use JustneroRu\EAISTO\Data\GetCardByVinResponse;
+use JustneroRu\EAISTO\Data\ListBrakingSystem;
+use JustneroRu\EAISTO\Data\ListBrakingSystemResponse;
+use JustneroRu\EAISTO\Data\ListFormType;
+use JustneroRu\EAISTO\Data\ListFormTypeResponse;
+use JustneroRu\EAISTO\Data\ListFuel;
+use JustneroRu\EAISTO\Data\ListFuelResponse;
+use JustneroRu\EAISTO\Data\ListRegistrationDocumentType;
+use JustneroRu\EAISTO\Data\ListRegistrationDocumentTypeResponse;
+use JustneroRu\EAISTO\Data\ListTestResult;
+use JustneroRu\EAISTO\Data\ListTestResultResponse;
+use JustneroRu\EAISTO\Data\ListTestType;
+use JustneroRu\EAISTO\Data\ListTestTypeResponse;
+use JustneroRu\EAISTO\Data\RegisterCard;
+use JustneroRu\EAISTO\Data\RegisterCardResponse;
 
-class Expert extends \SoapClient {
+class Expert extends SoapWrap {
 
-	/**
-	 * @var array $classmap The defined classes
-	 */
-	private static $classmap = [
-		'ChangeCard'             => 'JustneroRu\\EAISTO\\Data\\ChangeCard',
-		'ChangeCardResponse'     => 'JustneroRu\\EAISTO\\Data\\ChangeCardResponse',
-		'UnregisterCard'         => 'JustneroRu\\EAISTO\\Data\\UnregisterCard',
-		'UnregisterCardResponse' => 'JustneroRu\\EAISTO\\Data\\UnregisterCardResponse',
-		'UserInfo'               => 'JustneroRu\\EAISTO\\Data\\UserInfo',
-		'Card'                   => 'JustneroRu\\EAISTO\\Data\\Card',
-		'RegistrationDocument'   => 'JustneroRu\\EAISTO\\Data\\RegistrationDocument',
-		'Expert'                 => 'JustneroRu\\EAISTO\\Data\\Expert',
-		'Form'                   => 'JustneroRu\\EAISTO\\Data\\Form',
-		'ArrayOfCardItemValue'   => 'JustneroRu\\EAISTO\\Data\\ArrayOfCardItemValue',
-		'CardItemValue'          => 'JustneroRu\\EAISTO\\Data\\CardItemValue',
-		'Vehicle'                => 'JustneroRu\\EAISTO\\Data\\Vehicle',
-		'ArrayOfListItem'        => 'JustneroRu\\EAISTO\\Data\\ArrayOfListItem',
-		'ListItem'               => 'JustneroRu\\EAISTO\\Data\\ListItem',
+	/* @inheritdoc */
+	protected static $classmap = [
+		'RegisterCard'                         => 'JustneroRu\\EAISTO\\Data\\RegisterCard',
+		'RegisterCardResponse'                 => 'JustneroRu\\EAISTO\\Data\\RegisterCardResponse',
+		'GetCardByVin'                         => 'JustneroRu\\EAISTO\\Data\\GetCardByVin',
+		'GetCardByVinResponse'                 => 'JustneroRu\\EAISTO\\Data\\GetCardByVinResponse',
+		'ListTestResult'                       => 'JustneroRu\\EAISTO\\Data\\ListTestResult',
+		'ListTestResultResponse'               => 'JustneroRu\\EAISTO\\Data\\ListTestResultResponse',
+		'ListTestType'                         => 'JustneroRu\\EAISTO\\Data\\ListTestType',
+		'ListTestTypeResponse'                 => 'JustneroRu\\EAISTO\\Data\\ListTestTypeResponse',
+		'ListFuel'                             => 'JustneroRu\\EAISTO\\Data\\ListFuel',
+		'ListFuelResponse'                     => 'JustneroRu\\EAISTO\\Data\\ListFuelResponse',
+		'ListBrakingSystem'                    => 'JustneroRu\\EAISTO\\Data\\ListBrakingSystem',
+		'ListBrakingSystemResponse'            => 'JustneroRu\\EAISTO\\Data\\ListBrakingSystemResponse',
+		'ListFormType'                         => 'JustneroRu\\EAISTO\\Data\\ListFormType',
+		'ListFormTypeResponse'                 => 'JustneroRu\\EAISTO\\Data\\ListFormTypeResponse',
+		'ListRegistrationDocumentType'         => 'JustneroRu\\EAISTO\\Data\\ListRegistrationDocumentType',
+		'ListRegistrationDocumentTypeResponse' => 'JustneroRu\\EAISTO\\Data\\ListRegistrationDocumentTypeResponse',
+		'UserInfo'                             => 'JustneroRu\\EAISTO\\Data\\UserInfo',
+		'Card'                                 => 'JustneroRu\\EAISTO\\Data\\Card',
+		'RegistrationDocument'                 => 'JustneroRu\\EAISTO\\Data\\RegistrationDocument',
+		'Expert'                               => 'JustneroRu\\EAISTO\\Data\\Expert',
+		'Operator'                             => 'JustneroRu\\EAISTO\\Data\\Operator',
+		'Form'                                 => 'JustneroRu\\EAISTO\\Data\\Form',
+		'ArrayOfCardItemValue'                 => 'JustneroRu\\EAISTO\\Data\\ArrayOfCardItemValue',
+		'CardItemValue'                        => 'JustneroRu\\EAISTO\\Data\\CardItemValue',
+		'Vehicle'                              => 'JustneroRu\\EAISTO\\Data\\Vehicle',
+		'ArrayOfListItem'                      => 'JustneroRu\\EAISTO\\Data\\ArrayOfListItem',
+		'ListItem'                             => 'JustneroRu\\EAISTO\\Data\\ListItem',
 	];
+	/* @inheritdoc */
+	protected static $wsdl = 'http://eaisto.gibdd.ru/common/ws/arm_expert.php?wsdl';
 
 	/**
-	 * @param array $options A array of config values
-	 * @param string $wsdl The wsdl file to use
+	 * @param RegisterCard $parameters
+	 *
+	 * @return RegisterCardResponse
 	 */
-	public function __construct( array $options = [], $wsdl = null ) {
-		foreach ( self::$classmap as $key => $value ) {
-			if ( ! isset( $options['classmap'][ $key ] ) ) {
-				$options['classmap'][ $key ] = $value;
-			}
-		}
-		$options = array_merge( [
-			'features' => 1,
-		], $options );
-		if ( ! $wsdl ) {
-			$wsdl = 'http://eaisto.gibdd.ru/common/ws/arm_operator.php?wsdl';
-		}
-		parent::__construct( $wsdl, $options );
+	public function RegisterCard( RegisterCard $parameters ) {
+		return $this->__soapCall( 'RegisterCard', [ $parameters ] );
 	}
 
 	/**
-	 * @param ChangeCard $parameters
+	 * @param GetCardByVin $parameters
 	 *
-	 * @return ChangeCardResponse
+	 * @return GetCardByVinResponse
 	 */
-	public function ChangeCard( ChangeCard $parameters ) {
-		return $this->__soapCall( 'ChangeCard', [ $parameters ] );
+	public function GetCardByVin( GetCardByVin $parameters ) {
+		return $this->__soapCall( 'GetCardByVin', [ $parameters ] );
 	}
 
 	/**
-	 * @param UnregisterCard $parameters
+	 * @param ListTestResult $parameters
 	 *
-	 * @return UnregisterCardResponse
+	 * @return ListTestResultResponse
 	 */
-	public function UnregisterCard( UnregisterCard $parameters ) {
-		return $this->__soapCall( 'UnregisterCard', [ $parameters ] );
+	public function ListTestResult( ListTestResult $parameters ) {
+		return $this->__soapCall( 'ListTestResult', [ $parameters ] );
+	}
+
+	/**
+	 * @param ListTestType $parameters
+	 *
+	 * @return ListTestTypeResponse
+	 */
+	public function ListTestType( ListTestType $parameters ) {
+		return $this->__soapCall( 'ListTestType', [ $parameters ] );
+	}
+
+	/**
+	 * @param ListFuel $parameters
+	 *
+	 * @return ListFuelResponse
+	 */
+	public function ListFuel( ListFuel $parameters ) {
+		return $this->__soapCall( 'ListFuel', [ $parameters ] );
+	}
+
+	/**
+	 * @param ListBrakingSystem $parameters
+	 *
+	 * @return ListBrakingSystemResponse
+	 */
+	public function ListBrakingSystem( ListBrakingSystem $parameters ) {
+		return $this->__soapCall( 'ListBrakingSystem', [ $parameters ] );
+	}
+
+	/**
+	 * @param ListFormType $parameters
+	 *
+	 * @return ListFormTypeResponse
+	 */
+	public function ListFormType( ListFormType $parameters ) {
+		return $this->__soapCall( 'ListFormType', [ $parameters ] );
+	}
+
+	/**
+	 * @param ListRegistrationDocumentType $parameters
+	 *
+	 * @return ListRegistrationDocumentTypeResponse
+	 */
+	public function ListRegistrationDocumentType( ListRegistrationDocumentType $parameters ) {
+		return $this->__soapCall( 'ListRegistrationDocumentType', [ $parameters ] );
 	}
 
 }
