@@ -52,7 +52,7 @@ class Expert extends SoapWrap {
 		'ListItem'                             => 'JustneroRu\\EAISTO\\Data\\ListItem',
 	];
 	/* @inheritdoc */
-	protected static $wsdl = 'http://eaisto.gibdd.ru/common/ws/arm_expert.php?wsdl';
+	protected static $wsdl = 'https://eaisto.gibdd.ru/common/ws/arm_expert.php?wsdl';
 
 	/**
 	 * @param RegisterCard $parameters

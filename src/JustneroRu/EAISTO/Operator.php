@@ -28,7 +28,7 @@ class Operator extends SoapWrap {
 	];
 
 	/* @inheritdoc */
-	protected static $wsdl = 'http://eaisto.gibdd.ru/common/ws/arm_operator.php?wsdl';
+	protected static $wsdl = 'https://eaisto.gibdd.ru/common/ws/arm_operator.php?wsdl';
 
 	/**
 	 * @param ChangeCard $parameters

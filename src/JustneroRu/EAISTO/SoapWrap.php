@@ -18,7 +18,7 @@ class SoapWrap extends \SoapClient {
 	protected $timeout = 5000;
 	protected $connectTimeout = 1000;
 	/**
-	 * @var false|array
+	 * @var Proxy|false
 	 */
 	protected $proxy = false;
 
@@ -54,10 +54,7 @@ class SoapWrap extends \SoapClient {
 			'connection_timeout' => ceil( $this->connectTimeout / 1000 ),
 		], $options );
 		if ( $this->proxy !== false ) {
-			$options['proxy_host']     = $this->proxy['ip'];
-			$options['proxy_port']     = $this->proxy['port'];
-			$options['proxy_login']    = $this->proxy['login'];
-			$options['proxy_password'] = $this->proxy['password'];
+			$options += $this->proxy->optionsSoap();
 		}
 		if ( ! $wsdl ) {
 			$wsdl = static::$wsdl;
@@ -83,8 +80,23 @@ class SoapWrap extends \SoapClient {
 		}
 	}
 
+	/**
+	 * @param array|string|Proxy $proxy
+	 *
+	 * @throws Exception
+	 */
 	public function __setProxy( $proxy ) {
-		$this->proxy = $proxy;
+		if ( is_array( $proxy ) ) {
+			$proxy = Proxy::loadArray( $proxy );
+		} elseif ( is_string( $proxy ) ) {
+			$proxy = Proxy::loadFirst( $proxy );
+		}
+		if ( is_object( $proxy ) && $proxy instanceof Proxy ) {
+			$this->proxy = $proxy;
+
+			return;
+		}
+		throw new Exception( 'Invalid proxy config' );
 	}
 
 	/**
@@ -149,11 +161,7 @@ class SoapWrap extends \SoapClient {
 			}
 		}
 		if ( $this->proxy !== false ) {
-			$options[ CURLOPT_PROXY ]        = $this->proxy['ip'] . ':' . $this->proxy['port'];
-			$options[ CURLOPT_PROXYUSERPWD ] = $this->proxy['login'] . ':' . $this->proxy['password'];
-			if ( array_key_exists( 'is_http', $this->proxy ) && $this->proxy['is_http'] ) {
-				$options[ CURLOPT_HTTPPROXYTUNNEL ] = 1;
-			}
+			$options += $this->proxy->optionsCurl();
 		}
 
 		if ( curl_setopt_array( $curl, $options ) === false ) {
@@ -182,7 +190,7 @@ class SoapWrap extends \SoapClient {
 	 */
 	public function __setTimeout( $timeout ) {
 		if ( ! is_int( $timeout ) && ! is_null( $timeout ) || $timeout < 0 ) {
-			throw new Exception( "Invalid timeout value" );
+			throw new Exception( 'Invalid timeout value' );
 		}
 
 		$this->timeout = $timeout;
@@ -199,7 +207,7 @@ class SoapWrap extends \SoapClient {
 	 */
 	public function __setConnectTimeout( $connectTimeout ) {
 		if ( ! is_int( $connectTimeout ) && ! is_null( $connectTimeout ) || $connectTimeout < 0 ) {
-			throw new Exception( "Invalid connecttimeout value" );
+			throw new Exception( 'Invalid connecttimeout value' );
 		}
 
 		$this->connectTimeout = $connectTimeout;
