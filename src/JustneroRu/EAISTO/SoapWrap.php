@@ -17,6 +17,7 @@ class SoapWrap extends \SoapClient {
 	protected static $wsdl = '';
 	protected $timeout = 5000;
 	protected $connectTimeout = 1000;
+	protected $ssl_enabled = true;
 	/**
 	 * @var Proxy|false
 	 */
@@ -30,6 +31,10 @@ class SoapWrap extends \SoapClient {
 	 * @throws Exception
 	 */
 	public function __construct( $cacheDir, array $options = [], $wsdl = null ) {
+		if ( isset( $options['ssl_enabled'] ) ) {
+			$this->ssl_enabled = $options['ssl_enabled'];
+			unset( $options['ssl_enabled'] );
+		}
 		if ( isset( $options['timeout'] ) ) {
 			$this->__setTimeout( $options['timeout'] );
 			unset( $options['timeout'] );
@@ -60,7 +65,17 @@ class SoapWrap extends \SoapClient {
 			$wsdl = static::$wsdl;
 		}
 		if ( function_exists( 'xdebug_disable' ) ) {
+			/** @noinspection PhpComposerExtensionStubsInspection */
 			xdebug_disable();
+		}
+		if ( ! $this->ssl_enabled ) {
+			$options['stream_context'] = $options['stream_context'] ?? stream_context_create( [
+					'ssl' => [
+						'verify_peer'       => false,
+						'verify_peer_name'  => false,
+						'allow_self_signed' => true,
+					],
+				] );
 		}
 		$done = true;
 		do {
@@ -76,6 +91,7 @@ class SoapWrap extends \SoapClient {
 			}
 		} while ( ! $done );
 		if ( function_exists( 'xdebug_enable' ) ) {
+			/** @noinspection PhpComposerExtensionStubsInspection */
 			xdebug_enable();
 		}
 	}
@@ -137,13 +153,16 @@ class SoapWrap extends \SoapClient {
 		}
 
 		$options = [
-			CURLOPT_URL            => $url,
-			CURLOPT_VERBOSE        => false,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_HEADER         => false,
-			CURLOPT_NOSIGNAL       => true,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_CUSTOMREQUEST  => 'GET',
+			CURLOPT_URL              => $url,
+			CURLOPT_VERBOSE          => false,
+			CURLOPT_RETURNTRANSFER   => true,
+			CURLOPT_HEADER           => false,
+			CURLOPT_NOSIGNAL         => true,
+			CURLOPT_FOLLOWLOCATION   => true,
+			CURLOPT_CUSTOMREQUEST    => 'GET',
+			CURLOPT_SSL_VERIFYPEER   => $this->ssl_enabled,
+			CURLOPT_SSL_VERIFYHOST   => $this->ssl_enabled,
+			CURLOPT_SSL_VERIFYSTATUS => $this->ssl_enabled,
 		];
 
 		if ( $this->timeout > 0 ) {

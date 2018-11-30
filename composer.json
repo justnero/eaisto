@@ -6,5 +6,7 @@
         }
     },
     "require": {
+      "ext-soap": "*",
+      "ext-curl": "*"
     }
 }

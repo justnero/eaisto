@@ -50,7 +50,7 @@ class Proxy {
 	 * @return bool|Proxy|static
 	 * @throws \Exception
 	 */
-	public static function load( $filename = '', $strategy = self::PROXY_LOAD_NONE, $try = 0 ) {
+	public static function load( $filename = '', $strategy = self::PROXY_LOAD_NONE, $try = 5 ) {
 		if ( $filename !== '' && $strategy !== self::PROXY_LOAD_NONE ) {
 			static::proxiesLoad( $filename );
 			$instance = false;
